@@ -4,6 +4,7 @@ import { landing, contact } from "../../data/content.js";
 import { waLink } from "../../lib/contact.js";
 import Container from "../../components/ui/Container.jsx";
 import Eyebrow from "../../components/ui/Eyebrow.jsx";
+import Icon from "../../components/ui/Icon.jsx";
 
 export default function Hero() {
   return (
@@ -26,19 +27,19 @@ export default function Hero() {
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-brass px-6 py-3 text-base font-semibold text-ivory shadow-soft transition-colors hover:bg-brass-dark focus-visible:outline-ink"
           >
-            <span aria-hidden="true">💬</span>
+            <Icon name="chat" size={20} />
             <span>WhatsApp us</span>
           </a>
           <a
             href={contact.phones[0].href}
             className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-base font-semibold text-ink transition-colors hover:bg-ink hover:text-ivory focus-visible:outline-brass"
           >
-            <span aria-hidden="true">📞</span>
+            <Icon name="phone" size={20} />
             <span>Call {contact.phones[0].display}</span>
           </a>
         </div>
         <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-ink/50">
-          {contact.est} · {contact.hours} · {contact.address.split(",")[0]}
+          {contact.est} · {contact.hours} · {contact.shortAddress}
         </p>
       </Container>
     </section>

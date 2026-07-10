@@ -13,7 +13,7 @@ export default function ImmigrationConsultancy() {
       <BrandHero brand={brand} />
       <ServicesGrid brand={brand} />
       <ProcessList brand={brand} />
-      <GalleryStrip brand={brand} />
+      {/* <GalleryStrip brand={brand} /> */}
       <BrandQuote brand={brand} />
     </>
   );

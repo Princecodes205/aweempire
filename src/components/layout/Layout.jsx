@@ -1,15 +1,40 @@
 // Root layout — wraps every page with Header, main outlet, ContactBar, Footer, and FAB.
 // <ScrollRestoration /> from react-router resets scroll on route change.
-import { Outlet, ScrollRestoration } from "react-router";
+// <DocumentTitle /> keeps the browser tab title in sync with the active route.
+import { useEffect } from "react";
+import { Outlet, ScrollRestoration, useLocation } from "react-router";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import WhatsAppFab from "./WhatsAppFab.jsx";
 import ContactBar from "../ui/ContactBar.jsx";
 
+// Static map from pathname → tab title. Unknown routes get the 404 title.
+const TITLES = {
+  "/": "Awk Empire",
+  "/interior-empire": "Interior Empire · Awk Empire",
+  "/immigration-consultancy": "Immigration · Awk Empire",
+  "/agro-allied": "Agro Allied · Awk Empire",
+  "/real-estate": "Real Estate · Awk Empire",
+  "/foundation": "AWK Empire Foundation · Awk Empire",
+};
+
+const SUFFIX = "Awk Empire";
+const titleFor = (pathname) =>
+  TITLES[pathname] ?? `Page not found · ${SUFFIX}`;
+
+function DocumentTitle() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.title = titleFor(pathname);
+  }, [pathname]);
+  return null;
+}
+
 export default function Layout() {
   return (
     <>
       <ScrollRestoration />
+      <DocumentTitle />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-full focus:bg-brass focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ivory"

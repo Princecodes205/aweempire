@@ -9,7 +9,8 @@ const socialEntries = [
   { label: "Instagram — Interior", href: social.instagramInterior },
   { label: "Instagram — Travel", href: social.instagramTravel },
   { label: "Facebook — Agro", href: social.facebookAgro },
-  { label: "Facebook — Travel (unconfirmed)", href: social.facebookUnconfirmed },
+  { label: "Facebook — Real Estate", href: social.facebookRealEstate },
+  { label: "Facebook — Foundation", href: social.facebookFoundation },
 ];
 
 export default function Footer() {
@@ -91,7 +92,7 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-ink/10 pt-6 text-xs text-ink/60 md:flex-row md:items-center md:justify-between">
           <p>{footer.legal}</p>
-          <p>Three houses under one roof · {contact.estNote}</p>
+          <p>One root, five houses · {contact.estNote}</p>
         </div>
       </div>
     </footer>

@@ -2,6 +2,7 @@
 // Drives phone + WhatsApp + email links from the contact data object.
 import { contact } from "../../data/content.js";
 import { waLink } from "../../lib/contact.js";
+import Icon from "./Icon.jsx";
 
 export default function ContactBar({ context = "general" }) {
   const phone = contact.phones[0]; // Primary
@@ -19,7 +20,7 @@ export default function ContactBar({ context = "general" }) {
             href={phone.href}
             className="inline-flex items-center gap-2 rounded-full bg-brass px-5 py-3 text-sm font-semibold text-ivory transition-colors hover:bg-brass-dark focus-visible:outline-ivory"
           >
-            <span aria-hidden="true">📞</span>
+            <Icon name="phone" size={18} />
             <span>Call {phone.display}</span>
           </a>
           <a
@@ -28,14 +29,14 @@ export default function ContactBar({ context = "general" }) {
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-ivory/30 px-5 py-3 text-sm font-semibold text-ivory transition-colors hover:bg-ivory hover:text-ink focus-visible:outline-ivory"
           >
-            <span aria-hidden="true">💬</span>
+            <Icon name="chat" size={18} />
             <span>WhatsApp</span>
           </a>
           <a
             href={`mailto:${email}`}
             className="inline-flex items-center gap-2 rounded-full border border-ivory/30 px-5 py-3 text-sm font-semibold text-ivory transition-colors hover:bg-ivory hover:text-ink focus-visible:outline-ivory"
           >
-            <span aria-hidden="true">✉</span>
+            <Icon name="mail" size={18} />
             <span>Email us</span>
           </a>
         </div>

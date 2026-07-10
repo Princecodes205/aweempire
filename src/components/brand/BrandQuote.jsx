@@ -10,7 +10,7 @@ export default function BrandQuote({ brand }) {
     <Section className={accent.bgSofter}>
       <Container>
         <figure className="mx-auto max-w-3xl text-center">
-          <blockquote>
+          <blockquote cite={brand.quote.by}>
             <p className="font-display text-2xl font-medium leading-snug text-ink md:text-3xl lg:text-4xl">
               <span aria-hidden="true" className={`mr-1 ${accent.text}`}>“</span>
               {brand.quote.body}

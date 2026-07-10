@@ -5,9 +5,9 @@ import ProcessList from "../components/brand/ProcessList.jsx";
 import GalleryStrip from "../components/brand/GalleryStrip.jsx";
 import BrandQuote from "../components/brand/BrandQuote.jsx";
 
-const brand = brands.find((b) => b.slug === "agro");
+const brand = brands.find((b) => b.slug === "agro-allied");
 
-export default function AgroRealEstate() {
+export default function AgroAllied() {
   return (
     <>
       <BrandHero brand={brand} />

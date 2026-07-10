@@ -4,6 +4,7 @@ import { NavLink, Link } from "react-router";
 import { nav, contact } from "../../data/content.js";
 import Wordmark from "../brand/Wordmark.jsx";
 import MobileNav from "./MobileNav.jsx";
+import Icon from "../ui/Icon.jsx";
 
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
@@ -43,7 +44,7 @@ export default function Header() {
           href={contact.phones[0].href}
           className="hidden text-sm font-semibold text-ink hover:text-brass-dark md:inline-flex md:items-center md:gap-2"
         >
-          <span aria-hidden="true">📞</span>
+          <Icon name="phone" size={18} />
           <span>{contact.phones[0].display}</span>
         </a>
 
@@ -57,9 +58,7 @@ export default function Header() {
           onClick={() => setNavOpen(true)}
           className="rounded-full p-2 text-ink hover:bg-ink/5 md:hidden"
         >
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-            <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          </svg>
+          <Icon name="menu" size={22} />
         </button>
       </div>
 

@@ -5,7 +5,9 @@ import Layout from "./components/layout/Layout.jsx";
 import Landing from "./pages/Landing.jsx";
 import InteriorEmpire from "./pages/InteriorEmpire.jsx";
 import ImmigrationConsultancy from "./pages/ImmigrationConsultancy.jsx";
-import AgroRealEstate from "./pages/AgroRealEstate.jsx";
+import AgroAllied from "./pages/AgroAllied.jsx";
+import RealEstate from "./pages/RealEstate.jsx";
+import Foundation from "./pages/Foundation.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 const router = createBrowserRouter([
@@ -15,7 +17,9 @@ const router = createBrowserRouter([
       { index: true, element: <Landing /> },
       { path: "interior-empire", element: <InteriorEmpire /> },
       { path: "immigration-consultancy", element: <ImmigrationConsultancy /> },
-      { path: "agro-real-estate", element: <AgroRealEstate /> },
+      { path: "agro-allied", element: <AgroAllied /> },
+      { path: "real-estate", element: <RealEstate /> },
+      { path: "foundation", element: <Foundation /> },
       { path: "*", element: <NotFound /> },
     ],
   },

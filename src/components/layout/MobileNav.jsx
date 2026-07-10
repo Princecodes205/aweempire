@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import { NavLink } from "react-router";
 import { nav, contact } from "../../data/content.js";
 import Wordmark from "../brand/Wordmark.jsx";
+import Icon from "../ui/Icon.jsx";
 
 export default function MobileNav({ open, onClose }) {
   const location = useLocation();
@@ -60,9 +61,7 @@ export default function MobileNav({ open, onClose }) {
             aria-label="Close menu"
             className="rounded-full p-2 text-ink hover:bg-ink/5"
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M4 4 L16 16 M16 4 L4 16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-            </svg>
+            <Icon name="close" size={20} />
           </button>
         </div>
         <nav className="flex flex-col gap-1">

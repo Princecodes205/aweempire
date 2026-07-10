@@ -12,10 +12,10 @@ export default function Promise() {
           <div>
             <Eyebrow>What you can expect</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-medium leading-tight tracking-tight text-ink md:text-4xl">
-              One standard across all three houses.
+              One standard across all five houses.
             </h2>
             <p className="mt-4 text-ink/70 md:text-lg">
-              The three businesses look very different on paper, but the way we run them is the same.
+              The five businesses look very different on paper, but the way we run them is the same.
               These are the three things you can expect whether you are buying a bedsheet, filing a visa,
               or scouting a plot.
             </p>
