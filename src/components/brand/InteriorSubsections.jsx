@@ -1,34 +1,31 @@
-// Interior Empire — image-driven subsections added in v5.
+// Interior Empire — image-driven subsections.
 //
-// Both Curtain Accessories and Duvet Sets render as a 4-5 col / 2 col
-// image grid. Image discovery is automatic: `import.meta.glob` walks
-// src/assets/images/curtain-accessories/ and src/assets/images/duvet-sets/
-// at build time, and the grid renders every .jpg/.jpeg/.png/.webp found
-// in alphabetical order. Champ can add or remove images by dropping
-// files into the folders — no code change required.
+// All three subsections (Curtain Accessories, Duvet Sets, POP & TV
+// Console) render as a 4–5 col / 2 col responsive image grid using the
+// shared `InteriorImageGrid` component below.
 //
-// Note on the location: image folders live under `src/assets/images/`
-// rather than `public/images/` because Vite's `import.meta.glob` is
-// scoped to the module graph, and `public/` is excluded from it (those
-// files are served as static assets at runtime, not bundled). Placing
-// the images under `src/assets/images/` lets the glob discover them
-// and lets Vite emit hashed, cache-busted asset URLs.
+// Image source: Vite's `import.meta.glob` walks the folders under
+// `src/assets/images/` at build time and emits hashed, cache-busted
+// asset URLs. To add a new image, drop the file in the matching folder
+// and save — it appears in the grid on the next build. No code edit.
 //
 // V5 PENDING (per the v5 brief, 2026-07-10):
 //   1. The v2 open question of whether Clothing is still part of
-//      Interior Empire is NOT resolved by this v5 work — Clothing
+//      Interior Empire is NOT resolved by this v6 work — Clothing
 //      remains in the Interior services array per the 2026-07-10
 //      client confirmation. Confirm again with Champ before launch.
 import { useState } from "react";
 import {
   curtainAccessoriesWhatsAppHref,
   duvetSetsWhatsAppHref,
+  popTvConsoleWhatsAppHref,
+  accentMap,
 } from "../../data/content.js";
-import { accentMap } from "../../data/content.js";
 import Container from "../ui/Container.jsx";
 import Section from "../ui/Section.jsx";
 import Eyebrow from "../ui/Eyebrow.jsx";
 import Icon from "../ui/Icon.jsx";
+import { Reveal, Stagger, StaggerChild } from "../motion/primitives.jsx";
 
 const accent = accentMap.interior;
 
@@ -58,8 +55,18 @@ const duvetImages = Object.keys(duvetImageMap)
   .sort()
   .map((key) => duvetImageMap[key]);
 
+const popTvImageMap = import.meta.glob(
+  "../../assets/images/pop-tv-console/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+  { eager: true, query: "?url", import: "default" },
+);
+const popTvImages = Object.keys(popTvImageMap)
+  .sort()
+  .map((key) => popTvImageMap[key]);
+
 // One tile in the image grid. Renders the image; on load error, swaps to
 // a gray placeholder box with a TODO label so the page never breaks.
+// Image gets a tiny scale-up on hover (overflow-hidden parent clips it)
+// — same pattern as the Agro gallery.
 function ImageTile({ src, alt, index }) {
   const [broken, setBroken] = useState(false);
 
@@ -78,39 +85,47 @@ function ImageTile({ src, alt, index }) {
   }
 
   return (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      onError={() => setBroken(true)}
-      className="aspect-square w-full rounded-card object-cover"
-    />
+    <div className="aspect-square w-full overflow-hidden rounded-card">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        onError={() => setBroken(true)}
+        className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-105"
+      />
+    </div>
   );
 }
 
-// Shared grid shell. Used by both subsections.
+// Shared grid shell. Used by all three subsections.
 function InteriorImageGrid({ eyebrow, title, intro, images, whatsappHref }) {
   return (
     <Section>
       <Container>
-        <div className="max-w-2xl">
+        <Reveal as="div" className="max-w-2xl">
           <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className="mt-3 font-display text-3xl font-medium leading-tight tracking-tight text-ink md:text-4xl">
             {title}
           </h2>
           {intro ? <p className="mt-3 text-ink/70">{intro}</p> : null}
-        </div>
+        </Reveal>
 
         {images.length === 0 ? (
           <p className="mt-10 text-sm text-ink/50">
             No images uploaded yet.
           </p>
         ) : (
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 md:gap-4">
+          <Stagger
+            as="div"
+            amount={0.05}
+            className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 md:gap-4"
+          >
             {images.map((src, i) => (
-              <ImageTile key={src} src={src} alt={`${title} — image ${i + 1}`} index={i + 1} />
+              <StaggerChild key={src}>
+                <ImageTile src={src} alt={`${title} — image ${i + 1}`} index={i + 1} />
+              </StaggerChild>
             ))}
-          </div>
+          </Stagger>
         )}
 
         <div className="mt-10 flex">
@@ -132,9 +147,9 @@ function InteriorImageGrid({ eyebrow, title, intro, images, whatsappHref }) {
 export function CurtainAccessories() {
   return (
     <InteriorImageGrid
-      eyebrow="Curtain Accessories"
-      title="Hardware, finishing, and detail."
-      intro="Quality hardware and finishing pieces for curtain installations — rods, tiebacks, hooks, rings, and trims. Refine the wording once Champ has confirmed what's actually in the photo set."
+      eyebrow="Interior Empire"
+      title="Curtain Accessories"
+      intro="The finishing pieces that make a window treatment feel complete — rods, tiebacks, hooks, rings, and trims. Pulled together for made-to-measure installs across Karu, Abuja, and beyond."
       images={curtainImages}
       whatsappHref={curtainAccessoriesWhatsAppHref}
     />
@@ -144,11 +159,23 @@ export function CurtainAccessories() {
 export function DuvetSets() {
   return (
     <InteriorImageGrid
-      eyebrow="Duvet Sets"
-      title="Bedding, layered."
-      intro="Quality duvet sets in a range of designs and sizes."
+      eyebrow="Interior Empire"
+      title="Duvet Sets"
+      intro="Layered bedding in a range of designs and sizes, cut and sewn to your bed and your climate. Browse the set below and reach out on WhatsApp to check current stock."
       images={duvetImages}
       whatsappHref={duvetSetsWhatsAppHref}
+    />
+  );
+}
+
+export function PopTvConsole() {
+  return (
+    <InteriorImageGrid
+      eyebrow="Interior Empire"
+      title="POP & TV Console Designs"
+      intro="Plaster-of-Paris ceiling work and custom TV console units, built to fit the room and the brief. Each piece measured, finished, and installed by the same crew that handles our curtain work."
+      images={popTvImages}
+      whatsappHref={popTvConsoleWhatsAppHref}
     />
   );
 }

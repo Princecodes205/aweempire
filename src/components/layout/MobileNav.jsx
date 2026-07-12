@@ -39,7 +39,7 @@ export default function MobileNav({ open, onClose }) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div className="fixed inset-0 z-50 md:hidden " role="dialog" aria-modal="true" aria-label="Navigation">
       {/* Backdrop */}
       <button
         type="button"
@@ -52,14 +52,14 @@ export default function MobileNav({ open, onClose }) {
         ref={drawerRef}
         className="absolute right-0 top-0 flex h-full w-[85%] max-w-sm flex-col gap-8 bg-ivory px-6 py-6 shadow-soft"
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           <Wordmark size="sm" />
           <button
             ref={closeRef}
             type="button"
             onClick={onClose}
             aria-label="Close menu"
-            className="rounded-full p-2 text-ink hover:bg-ink/5"
+            className="rounded-full p-2 text-ink hover:bg-ink/5 "
           >
             <Icon name="close" size={20} />
           </button>
@@ -71,8 +71,7 @@ export default function MobileNav({ open, onClose }) {
               to={item.to}
               end={item.to === "/"}
               className={({ isActive }) =>
-                `rounded-lg px-3 py-3 text-lg font-medium transition-colors ${
-                  isActive ? "bg-brass/10 text-brass-dark" : "text-ink hover:bg-ink/5"
+                `rounded-lg px-3 py-3 text-lg font-medium transition-colors ${isActive ? "bg-brass/10 text-brass-dark" : "text-ink hover:bg-ink/5"
                 }`
               }
             >

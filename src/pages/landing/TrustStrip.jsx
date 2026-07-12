@@ -2,6 +2,7 @@
 // Kept as a quiet horizontal bar, not a headline.
 import { contact } from "../../data/content.js";
 import Container from "../../components/ui/Container.jsx";
+import { Stagger, StaggerChild } from "../../components/motion/primitives.jsx";
 
 const facts = [
   { label: "Established", value: contact.est },
@@ -14,18 +15,18 @@ export default function TrustStrip() {
   return (
     <section className="border-y border-ink/10 bg-ivory py-8">
       <Container>
-        <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <Stagger as="ul" className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {facts.map((f) => (
-            <li key={f.label} className="flex flex-col">
+            <StaggerChild key={f.label} as="li" className="flex flex-col">
               <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-ink/50">
                 {f.label}
               </span>
               <span className="mt-1 font-display text-lg font-medium text-ink md:text-xl">
                 {f.value}
               </span>
-            </li>
+            </StaggerChild>
           ))}
-        </ul>
+        </Stagger>
       </Container>
     </section>
   );

@@ -9,6 +9,7 @@ import AgroAllied from "./pages/AgroAllied.jsx";
 import RealEstate from "./pages/RealEstate.jsx";
 import Foundation from "./pages/Foundation.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import PreviewHeroes from "./pages/PreviewHeroes.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "agro-allied", element: <AgroAllied /> },
       { path: "real-estate", element: <RealEstate /> },
       { path: "foundation", element: <Foundation /> },
+      { path: "preview-heroes", element: <PreviewHeroes /> },
       { path: "*", element: <NotFound /> },
     ],
   },

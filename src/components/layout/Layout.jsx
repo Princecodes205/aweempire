@@ -1,12 +1,15 @@
 // Root layout — wraps every page with Header, main outlet, ContactBar, Footer, and FAB.
 // <ScrollRestoration /> from react-router resets scroll on route change.
 // <DocumentTitle /> keeps the browser tab title in sync with the active route.
+// <AnimatePresence> + <PageTransition> handle the cross-fade between routes.
 import { useEffect } from "react";
 import { Outlet, ScrollRestoration, useLocation } from "react-router";
+import { AnimatePresence } from "framer-motion";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import WhatsAppFab from "./WhatsAppFab.jsx";
 import ContactBar from "../ui/ContactBar.jsx";
+import { PageTransition } from "../motion/primitives.jsx";
 
 // Static map from pathname → tab title. Unknown routes get the 404 title.
 const TITLES = {
@@ -31,6 +34,7 @@ function DocumentTitle() {
 }
 
 export default function Layout() {
+  const { pathname } = useLocation();
   return (
     <>
       <ScrollRestoration />
@@ -43,7 +47,11 @@ export default function Layout() {
       </a>
       <Header />
       <main id="main" className="min-h-[60svh] pb-24 md:pb-16">
-        <Outlet />
+        <AnimatePresence mode="wait" initial={false}>
+          <PageTransition key={pathname}>
+            <Outlet />
+          </PageTransition>
+        </AnimatePresence>
       </main>
       <ContactBar />
       <Footer />

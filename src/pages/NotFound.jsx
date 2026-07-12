@@ -10,7 +10,7 @@ export default function NotFound() {
       <Container className="text-center">
         <Eyebrow>404</Eyebrow>
         <Heading as="h1" size="display" className="mt-3">
-          This page is not in the Empire.
+          This page is not in the AWE Empire.
         </Heading>
         <p className="mx-auto mt-6 max-w-md text-ink/70">
           The page you are looking for has moved or never existed. Head back to the home page or call us.

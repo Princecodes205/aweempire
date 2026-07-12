@@ -43,10 +43,10 @@ export const social = {
 
 export const nav = [
   { label: "Home", to: "/" },
-  { label: "Interior Empire", to: "/interior-empire" },
-  { label: "Immigration", to: "/immigration-consultancy" },
-  { label: "Awk Agro Allied", to: "/agro-allied" },
   { label: "Real Estate", to: "/real-estate" },
+  { label: "Interior Empire", to: "/interior-empire" },
+  { label: "Immigration Consultancy", to: "/immigration-consultancy" },
+  { label: "Awk Agro Allied", to: "/agro-allied" },
   { label: "Foundation", to: "/foundation" },
 ];
 
@@ -509,7 +509,7 @@ export const landing = {
     },
     {
       pillar: "Civic Impact & Governance",
-      subBrand: "AWK Empire Foundation",
+      subBrand: "AWK_nanaw Foundation",
       copy: "Our social heartbeat. We are deeply committed to driving institutional transparency, public policy advocacy, accessible healthcare, quality education, and robust electoral enlightenment.",
       to: "/foundation",
       accentSlug: "foundation",
@@ -549,10 +549,6 @@ export const landing = {
     {
       title: "Fixed quotes, no surprises",
       body: "Every job, every visa file, every plot comes with a written quote before work starts. No moving goalposts.",
-    },
-    {
-      title: "Built for Karu, open to Nigeria",
-      body: "Walk into our Karu-Jikwoyi office any day of the week. We will pick up.",
     },
   ],
 };
@@ -661,21 +657,25 @@ export function getPropertyWhatsAppLink(property) {
 // duplicating the naira + commas logic.
 export const formatNaira = (n) => `₦${Number(n).toLocaleString()}`;
 
-// Interior Empire — image-driven subsections (v5).
+// Interior Empire — image-driven subsections (v6).
 //
-// The grids auto-discover images via `import.meta.glob` in the component
-// file, so the filename convention is irrelevant — Champ can drop any
-// `.jpg`/`.jpeg`/`.png`/`.webp` into either folder and it will appear.
-// See InteriorSubsections.jsx for the glob patterns.
-export const curtainAccessoriesFolder = "/images/curtain-accessories/";
-export const duvetSetsFolder = "/images/duvet-sets/";
+// Filename arrays live in src/components/brand/InteriorSubsections.jsx
+// and src/components/brand/AgroGallery.jsx. Image files sit under
+// `public/images/...` and are served as static assets at runtime. To
+// add or remove an image, drop the file in the matching folder and
+// update the filename array in the component file — there's no build-
+// time auto-discovery, so the array is the source of truth.
 
-// Pre-filled WhatsApp enquiry links for the two new sections. Same phone
-// number as the rest of the site (contact.phones[0]).
+// Pre-filled WhatsApp enquiry links for the new gallery sections. Same
+// phone number as the rest of the site (contact.phones[0]).
 export const curtainAccessoriesWhatsAppHref =
-  "https://wa.me/2347067954206?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Curtain%20Accessories";
+  "https://wa.me/2347067954206?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20Curtain%20Accessories";
 export const duvetSetsWhatsAppHref =
-  "https://wa.me/2347067954206?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Duvet%20Sets";
+  "https://wa.me/2347067954206?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20Duvet%20Sets";
+export const popTvConsoleWhatsAppHref =
+  "https://wa.me/2347067954206?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20POP%20%26%20TV%20Console%20designs";
+export const agroAlliedWhatsAppHref =
+  "https://wa.me/2347067954206?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20Agro%20Allied%20produce%2Fservices";
 
 
 

@@ -5,6 +5,7 @@ import { landing } from "../../data/content.js";
 import Container from "../../components/ui/Container.jsx";
 import Section from "../../components/ui/Section.jsx";
 import Eyebrow from "../../components/ui/Eyebrow.jsx";
+import { Reveal, Stagger, StaggerChild, HoverLift } from "../../components/motion/primitives.jsx";
 
 export default function Philosophy() {
   const { philosophy } = landing;
@@ -12,45 +13,56 @@ export default function Philosophy() {
   return (
     <Section>
       <Container>
-        <div className="max-w-2xl">
+        <Reveal as="div" className="max-w-2xl">
           <Eyebrow>{philosophy.eyebrow}</Eyebrow>
           <h2 className="mt-3 font-display text-3xl font-medium leading-tight tracking-tight text-ink md:text-4xl">
             One standard across all five houses.
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <article className="rounded-card border border-ink/10 bg-ivory p-8">
-            <Eyebrow>{philosophy.vision.eyebrow}</Eyebrow>
-            <p className="mt-4 text-lg leading-relaxed text-ink/80 md:text-xl">
-              {philosophy.vision.body}
-            </p>
-          </article>
-          <article className="rounded-card border border-ink/10 bg-ivory p-8">
-            <Eyebrow>{philosophy.mission.eyebrow}</Eyebrow>
-            <p className="mt-4 text-lg leading-relaxed text-ink/80 md:text-xl">
-              {philosophy.mission.body}
-            </p>
-          </article>
-        </div>
+        <Stagger as="div" className="mt-12 grid gap-6 md:grid-cols-2">
+          <StaggerChild>
+            <HoverLift intensity="subtle" className="h-full">
+              <article className="h-full rounded-card border border-ink/10 bg-ivory p-8">
+                <Eyebrow>{philosophy.vision.eyebrow}</Eyebrow>
+                <p className="mt-4 text-lg leading-relaxed text-ink/80 md:text-xl">
+                  {philosophy.vision.body}
+                </p>
+              </article>
+            </HoverLift>
+          </StaggerChild>
+          <StaggerChild>
+            <HoverLift intensity="subtle" className="h-full">
+              <article className="h-full rounded-card border border-ink/10 bg-ivory p-8">
+                <Eyebrow>{philosophy.mission.eyebrow}</Eyebrow>
+                <p className="mt-4 text-lg leading-relaxed text-ink/80 md:text-xl">
+                  {philosophy.mission.body}
+                </p>
+              </article>
+            </HoverLift>
+          </StaggerChild>
+        </Stagger>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <Stagger as="div" amount={0.15} className="mt-10 grid gap-6 md:grid-cols-3">
           {philosophy.values.map((v, i) => (
-            <article
-              key={v.title}
-              className="rounded-card border border-ink/10 bg-ivory-2 p-6"
-            >
-              <span
-                aria-hidden="true"
-                className="font-display text-sm font-semibold text-brass-dark"
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-2 font-display text-xl font-medium text-ink">{v.title}</h3>
-              <p className="mt-2 text-sm text-ink/70">{v.body}</p>
-            </article>
+            <StaggerChild key={v.title}>
+              <HoverLift intensity="subtle" className="h-full">
+                <article
+                  className="h-full rounded-card border border-ink/10 bg-ivory-2 p-6"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="font-display text-sm font-semibold text-brass-dark"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-2 font-display text-xl font-medium text-ink">{v.title}</h3>
+                  <p className="mt-2 text-sm text-ink/70">{v.body}</p>
+                </article>
+              </HoverLift>
+            </StaggerChild>
           ))}
-        </div>
+        </Stagger>
       </Container>
     </Section>
   );

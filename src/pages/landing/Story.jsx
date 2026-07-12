@@ -5,6 +5,7 @@ import { landing } from "../../data/content.js";
 import Container from "../../components/ui/Container.jsx";
 import Section from "../../components/ui/Section.jsx";
 import Eyebrow from "../../components/ui/Eyebrow.jsx";
+import { Reveal } from "../../components/motion/primitives.jsx";
 
 export default function Story() {
   const { story } = landing;
@@ -12,17 +13,17 @@ export default function Story() {
   return (
     <Section className="bg-ivory-2">
       <Container>
-        <div className="mx-auto max-w-3xl text-center">
+        <Reveal as="div" className="mx-auto max-w-3xl text-center">
           <Eyebrow>{story.eyebrow}</Eyebrow>
           <h2 className="mt-4 font-display text-3xl font-medium leading-tight tracking-tight text-ink md:text-4xl lg:text-5xl">
             {story.title}
           </h2>
-        </div>
-        <div className="mx-auto mt-10 max-w-3xl space-y-6 text-base leading-relaxed text-ink/80 md:text-lg">
+        </Reveal>
+        <Reveal as="div" delay={0.1} className="mx-auto mt-10 max-w-3xl space-y-6 text-base leading-relaxed text-ink/80 md:text-lg">
           {story.paragraphs.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
-        </div>
+        </Reveal>
       </Container>
     </Section>
   );
