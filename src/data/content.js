@@ -51,7 +51,7 @@ export const nav = [
 ];
 
 export const footer = {
-  tagline: "One root, five houses — built on craft, papers, land, food, and civic voice.",
+  tagline: "One root, five businesses — built on craft, papers, land, food, and civic voice.",
   legal: `© ${new Date().getFullYear()} Awk Empire. All rights reserved.`,
 };
 
@@ -462,14 +462,14 @@ export const accentMap = {
 };
 
 export const landing = {
-  eyebrow: "Awk Empire · One root, five houses",
+  eyebrow: "Awk Empire · One root, five businesses",
   headline: "One Root. Endless Possibilities.",
   lede: "Welcome to the AWK Ecosystem. From transforming living spaces and facilitating global mobility to driving agricultural sustainability and advocating for a better society, we build solutions that empower lives and secure futures.",
   story: {
     eyebrow: "Our story",
     title: "The Genesis of AWK Empire.",
     paragraphs: [
-      "Every great structure begins with a strong foundation. Like the resilient Oak tree, which stands firm through changing seasons while providing shade and shelter, The AWK Group was established to be a pillar of growth, security, and transformation across Africa and beyond.",
+      "Every great structure begins with a strong foundation. Like the resilient Oak tree, which stands firm through changing seasons while providing shade and shelter, The AWK Empire was established to be a pillar of growth, security, and transformation across Africa and beyond.",
       "What began as a passion for exquisite lifestyle design has evolved into a dynamic, multi-faceted conglomerate. Today, our footprint spans five distinct sectors: Interior Architecture & Textiles, Global Mobility & Immigration, Sustainable Agribusiness, Real Estate Investment, and Civic Advocacy.",
       "We do not merely run businesses; we build interconnected ecosystems. By blending strategic foresight with absolute integrity, we ensure that every branch of our empire delivers world-class value to individuals, families, corporate organizations, and society at large.",
     ],
@@ -481,7 +481,7 @@ export const landing = {
       copy: "Your home should be your sanctuary. AWK Interior Empire specializes in premium, custom-crafted bedsheets, luxury duvets, and bespoke window treatments designed to elevate your living spaces.",
       to: "/interior-empire",
       accentSlug: "interior",
-      cta: "Visit the house",
+      cta: "Visit the business",
     },
     {
       pillar: "Global Mobility",
@@ -489,7 +489,7 @@ export const landing = {
       copy: "Navigating the complexities of international borders. We provide seamless, compliant solutions for visas, residency permits, corporate expatriate quotas, flight bookings, and comprehensive travel logistics.",
       to: "/immigration-consultancy",
       accentSlug: "immigration",
-      cta: "Visit the house",
+      cta: "Visit the business",
     },
     {
       pillar: "Food Security & Sustainability",
@@ -497,7 +497,7 @@ export const landing = {
       copy: "Driving modern, sustainable livestock and agricultural practices that strengthen local supply chains and deliver premium quality from farm to table.",
       to: "/agro-allied",
       accentSlug: "agro-allied",
-      cta: "Visit the house",
+      cta: "Visit the business",
     },
     {
       pillar: "Wealth & Infrastructure",
@@ -505,7 +505,7 @@ export const landing = {
       copy: "Creating tangible assets and securing futures through transparent, high-yield property acquisitions, commercial real estate, and residential developments.",
       to: "/real-estate",
       accentSlug: "real-estate",
-      cta: "Visit the house",
+      cta: "Visit the business",
     },
     {
       pillar: "Civic Impact & Governance",
@@ -513,7 +513,7 @@ export const landing = {
       copy: "Our social heartbeat. We are deeply committed to driving institutional transparency, public policy advocacy, accessible healthcare, quality education, and robust electoral enlightenment.",
       to: "/foundation",
       accentSlug: "foundation",
-      cta: "Visit the house",
+      cta: "Visit the business",
     },
   ],
   philosophy: {
@@ -543,8 +543,8 @@ export const landing = {
   },
   promise: [
     {
-      title: "One phone line, five houses",
-      body: "Call once. We will tell you which of the five houses can help, and refer you to the right one if it is not us.",
+      title: "One phone line, five businesses",
+      body: "Call once. We will tell you which of the five businesses can help, and refer you to the right one if it is not us.",
     },
     {
       title: "Fixed quotes, no surprises",
