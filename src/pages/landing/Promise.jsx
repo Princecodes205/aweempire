@@ -13,7 +13,7 @@ export default function Promise() {
           <Reveal as="div">
             <Eyebrow>What you can expect</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-medium leading-tight tracking-tight text-ink md:text-4xl">
-              One standard across all five Businesses.
+              One standard across all five businesses.
             </h2>
           </Reveal>
           <Stagger as="ol" amount={0.15} className="space-y-6">

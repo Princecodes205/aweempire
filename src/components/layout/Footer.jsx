@@ -29,7 +29,7 @@ export default function Footer() {
 
           {/* Sitemap */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/60">Houses</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/60">Businesses</h3>
             <ul className="mt-4 space-y-2 text-sm">
               {nav.map((item) => (
                 <li key={item.to}>
@@ -92,7 +92,7 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-ink/10 pt-6 text-xs text-ink/60 md:flex-row md:items-center md:justify-between">
           <p>{footer.legal}</p>
-          <p>One root, five houses · {contact.estNote}</p>
+          <p>One root, five businesses · {contact.estNote}</p>
         </div>
       </div>
     </footer>

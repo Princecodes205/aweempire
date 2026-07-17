@@ -15,13 +15,14 @@ export default function ContactBar({ context = "general" }) {
           <p className="font-display text-2xl md:text-3xl">Talk to a real person.</p>
           <p className="mt-1 text-sm text-ivory/70">{contact.estNote} · {contact.hours}</p>
         </div>
-        <div className="flex flex-wrap gap-3">
+        <div className="glass-soft flex flex-wrap gap-2 rounded-2xl p-2 sm:gap-3">
           <a
             href={phone.href}
             className="inline-flex items-center gap-2 rounded-full bg-brass px-5 py-3 text-sm font-semibold text-ivory transition-colors hover:bg-brass-dark focus-visible:outline-ivory"
           >
             <Icon name="phone" size={18} />
-            <span>Call {phone.display}</span>
+            <span>Call</span>
+            <span className="hidden sm:inline">{phone.display}</span>
           </a>
           <a
             href={waLink("general")}

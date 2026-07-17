@@ -33,7 +33,7 @@ export default function GalleryStrip({ brand }) {
             A few things we have made.
           </h2>
           <p className="mt-3 text-ink/70">
-            {/* TODO: replace with real Awk Empire product photography */}
+            {/* TODO: replace with real Awk Group product photography */}
             These are placeholder photos from Unsplash to give the layout its real shape. Swap them
             out for actual product shots before launch.
           </p>

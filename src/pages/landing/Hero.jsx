@@ -65,7 +65,7 @@ export default function Hero() {
           <figure className="relative aspect-[4/3] w-full overflow-hidden rounded-card shadow-soft md:aspect-[5/6]">
             <img
               src={landingHero}
-              alt="Awk Empire — five houses under one root"
+              alt="Awk Group — five businesses under one root"
               loading="eager"
               fetchpriority="high"
               width="1600"

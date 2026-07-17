@@ -13,15 +13,15 @@ import { PageTransition } from "../motion/primitives.jsx";
 
 // Static map from pathname → tab title. Unknown routes get the 404 title.
 const TITLES = {
-  "/": "Awk Empire",
-  "/interior-empire": "Interior Empire · Awk Empire",
-  "/immigration-consultancy": "Immigration · Awk Empire",
-  "/agro-allied": "Agro Allied · Awk Empire",
-  "/real-estate": "Real Estate · Awk Empire",
-  "/foundation": "AWK Empire Foundation · Awk Empire",
+  "/": "Awk Group",
+  "/interior-empire": "Interior Empire · Awk Group",
+  "/immigration-consultancy": "Immigration · Awk Group",
+  "/agro-allied": "Agro Allied · Awk Group",
+  "/real-estate": "Real Estate · Awk Group",
+  "/foundation": "AWK Empire Foundation · Awk Group",
 };
 
-const SUFFIX = "Awk Empire";
+const SUFFIX = "Awk Group";
 const titleFor = (pathname) =>
   TITLES[pathname] ?? `Page not found · ${SUFFIX}`;
 

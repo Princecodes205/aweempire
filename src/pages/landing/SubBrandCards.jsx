@@ -18,12 +18,12 @@ export default function SubBrandCards() {
     <Section>
       <Container>
         <Reveal as="div" className="max-w-2xl">
-          <Eyebrow>Five houses</Eyebrow>
+          <Eyebrow>Five businesses</Eyebrow>
           <h2 className="mt-3 font-display text-3xl font-medium leading-tight tracking-tight text-ink md:text-4xl">
             Five doors. One root.
           </h2>
           <p className="mt-3 text-ink/70">
-            Each Awk house is its own business with its own phone line, its own quote, and its own team.
+            Each Awk business has its own phone line, its own quote, and its own team.
             Call one and the other four are a referral away.
           </p>
         </Reveal>

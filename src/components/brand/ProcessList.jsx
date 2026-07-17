@@ -14,7 +14,7 @@ export default function ProcessList({ brand }) {
             Four steps, no surprises.
           </h2>
           <p className="mt-3 text-ink/70">
-            Every {brand.heroEyebrow.toLowerCase().replace("house of ", "")} job follows the same
+            Every {brand.heroEyebrow.toLowerCase().replace(/house of |business of /, "")} job follows the same
             shape. The timeline changes; the steps do not.
           </p>
         </Reveal>

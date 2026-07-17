@@ -56,7 +56,7 @@ export default function PropertyDashboard() {
                         {p.badges.map((b) => (
                           <li
                             key={b}
-                            className={`inline-flex items-center rounded-full ${accent.bg} px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ivory`}
+                            className={`glass-soft inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink`}
                           >
                             {b}
                           </li>

@@ -10,9 +10,9 @@ export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-ink/5 bg-ivory shadow-[0_1px_0_0_rgba(0,0,0,0.04)] md:bg-ivory/85 md:shadow-none md:backdrop-blur md:supports-[backdrop-filter]:bg-ivory/70">
+    <header className="sticky top-0 z-40 border-b border-ink/5 bg-ivory shadow-[0_1px_0_0_rgba(0,0,0,0.04)] md:bg-ivory/85 md:supports-[backdrop-filter]:bg-ivory/70 md:backdrop-blur">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-8">
-        <Link to="/" aria-label="Awk Empire home" className="shrink-0">
+        <Link to="/" aria-label="Awk Group home" className="shrink-0">
           <Wordmark size="sm" />
         </Link>
 

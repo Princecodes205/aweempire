@@ -52,7 +52,7 @@ export const nav = [
 
 export const footer = {
   tagline: "One root, five businesses — built on craft, papers, land, food, and civic voice.",
-  legal: `© ${new Date().getFullYear()} Awk Empire. All rights reserved.`,
+  legal: `© ${new Date().getFullYear()} Awk Group. All rights reserved.`,
 };
 
 export const brands = [
@@ -62,7 +62,7 @@ export const brands = [
     to: "/interior-empire",
     accentClass: "interior",
     tagline: "Premium bedsheets, luxury duvets, and bespoke window treatments — made to order.",
-    heroEyebrow: "House of craft",
+    heroEyebrow: "Business of craft",
     heroHeadline: "Rooms that hold a life, not just furniture.",
     lede: "From a single made-to-measure curtain to a full interior build-out, we work with homes, apartments, and small commercial spaces across Karu, Abuja, and beyond. Warm materials, exacting fit, and timelines we keep.",
     services: [
@@ -120,7 +120,7 @@ export const brands = [
     to: "/immigration-consultancy",
     accentClass: "immigration",
     tagline: "Visas, residency, expatriate quotas, flights, and full travel logistics.",
-    heroEyebrow: "House of papers",
+    heroEyebrow: "Business of papers",
     heroHeadline: "Visas that move at the pace of your life, not the embassy queue.",
     lede: "Visas, study placements, work and relocation, flights, accommodation, and full travel logistics — for individuals, students, families, and corporate clients.",
     // NOTE — service structure: each service has a `features` array (rendered
@@ -133,7 +133,7 @@ export const brands = [
     services: [
       {
         title: "Visa Assistance",
-        body: "Helping clients navigate visa applications for major destinations — USA, Canada, UK, Australia, and the Schengen area — across tourism, study, work, and business categories.",
+        body: "Helping clients navigate visa applications for major destinations — including inbound Nigeria visa for foreign visitors and nationals, plus outbound applications for USA, Canada, UK, Australia, and the Schengen area — across tourism, study, work, and business categories.",
         features: [
           "Document review & compilation",
           "Application form completion",
@@ -227,6 +227,28 @@ export const brands = [
       body: "Clear, fast, and they actually picked up the phone when I had questions.",
       by: "— Awk client, post-approval",
     },
+    howWeAssist: {
+      eyebrow: "How we can assist",
+      title: "How Awk Immigration Consultancy Can Assist You",
+      intro:
+        "We handle Nigeria visa: Navigating cross-border travel and business expansion requires trusted expertise. We simplify your journey by managing the complexities of immigration and regulatory compliance:",
+      pillars: [
+        {
+          title: "Seamless Travel",
+          body: "Swift processing for Business, Tourist, and Visitor Visas.",
+        },
+        {
+          title: "Corporate Immigration",
+          body: "Expert guidance on Expatriate Quotas, Subject to Regularization (STR) visas, and residency permits.",
+        },
+        {
+          title: "Investor Pathways",
+          body: "Helping you establish your business smoothly and in full compliance with local regulations.",
+        },
+      ],
+      closing:
+        "Whether you are planning your first visit or looking to establish a commercial foothold, we are here to ensure your transition is seamless.",
+    },
     galleryCount: 6,
     ctaEmail: "Awktravelandtour@gmail.com",
     socialHandle: "@awktravelandtour",
@@ -238,7 +260,7 @@ export const brands = [
     to: "/agro-allied",
     accentClass: "agro",
     tagline: "Modern, sustainable livestock and agricultural practices, farm to table.",
-    heroEyebrow: "House of harvest",
+    heroEyebrow: "Business of harvest",
     heroHeadline: "Farms that feed the people, not just the balance sheet.",
     lede: "Driving modern, sustainable livestock and agricultural practices that strengthen local supply chains and deliver premium quality from farm to table.",
     services: [
@@ -291,7 +313,7 @@ export const brands = [
     to: "/real-estate",
     accentClass: "real-estate",
     tagline: "Property acquisitions, commercial real estate, and residential developments.",
-    heroEyebrow: "House of land",
+    heroEyebrow: "Business of land",
     heroHeadline: "Plots and buildings that hold value, not just a price tag.",
     lede: "Creating tangible assets and securing futures through transparent, high-yield property acquisitions, commercial real estate, and residential developments.",
     services: [
@@ -348,7 +370,7 @@ export const brands = [
     to: "/foundation",
     accentClass: "foundation",
     tagline: "Our social heartbeat — institutional transparency, advocacy, healthcare, education, and electoral enlightenment.",
-    heroEyebrow: "House of voice",
+    heroEyebrow: "Business of voice",
     heroHeadline: "Our social heartbeat.",
     lede: "We are deeply committed to driving institutional transparency, public policy advocacy, accessible healthcare, quality education, and robust electoral enlightenment.",
     services: [
@@ -401,7 +423,7 @@ export const brands = [
     },
     quote: {
       body: "An empire is measured by what it gives back, not by what it sells.",
-      by: "— Awk Empire Foundation",
+      by: "— Awk Group Foundation",
     },
     ctaEmail: "awkinvestmentltd@gmail.com",
     socialHandle: null,
@@ -462,7 +484,7 @@ export const accentMap = {
 };
 
 export const landing = {
-  eyebrow: "Awk Empire · One root, five businesses",
+  eyebrow: "Awk Group · One root, five businesses",
   headline: "One Root. Endless Possibilities.",
   lede: "Welcome to the AWK Ecosystem. From transforming living spaces and facilitating global mobility to driving agricultural sustainability and advocating for a better society, we build solutions that empower lives and secure futures.",
   story: {

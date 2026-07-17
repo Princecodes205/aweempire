@@ -67,3 +67,31 @@
     }
   }
 }
+
+/* Glassmorphism utilities — for floating UI surfaces that overlay
+   varied content (property photos, the dark ContactBar band). NOT
+   appropriate for surfaces over flat ivory (the header, the EST pill)
+   because translucent ivory on top of full ivory reads as no
+   background at all.
+     - soft:   small on-image overlays (badges over photos)
+     - medium: floating action surfaces (FAB, pill rows on dark band)
+   Both need browsers that support backdrop-filter. Browsers without
+   it see a translucent fill that may be invisible — which is the
+   correct graceful degradation: the surface just isn't visible, no
+   wrong colors shown. Use only on surfaces where missing the effect
+   is acceptable. */
+@utility glass-soft {
+  background-color: color-mix(in oklab, var(--color-ivory) 22%, transparent);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--color-ivory) 45%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility glass-medium {
+  background-color: color-mix(in oklab, var(--color-ivory) 28%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid color-mix(in oklab, var(--color-ivory) 40%, transparent);
+  box-shadow: var(--shadow-soft);
+}

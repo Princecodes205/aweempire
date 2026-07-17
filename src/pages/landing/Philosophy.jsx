@@ -16,7 +16,7 @@ export default function Philosophy() {
         <Reveal as="div" className="max-w-2xl">
           <Eyebrow>{philosophy.eyebrow}</Eyebrow>
           <h2 className="mt-3 font-display text-3xl font-medium leading-tight tracking-tight text-ink md:text-4xl">
-            One standard across all five houses.
+            One standard across all five businesses.
           </h2>
         </Reveal>
 

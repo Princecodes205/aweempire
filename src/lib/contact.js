@@ -18,4 +18,4 @@ export const waLink = (context = "general", prefill) => {
 
 /** default prefill for the floating WhatsApp button */
 export const waPrefill = (context) =>
-  `Hello Awk Empire, I'd like to enquire about ${context}.`;
+  `Hello Awk Group, I'd like to enquire about ${context}.`;

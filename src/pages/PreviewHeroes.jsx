@@ -13,12 +13,12 @@ import realEstate from "../assets/images/heroes/real-estate.jpg";
 import foundation from "../assets/images/heroes/foundation.jpg";
 
 const picks = [
-  { slug: "landing", intended: "Landing (/) — Awk Empire overview", src: landing },
-  { slug: "interior", intended: "/interior-empire — House of craft (curtains, duvets)", src: interior },
-  { slug: "immigration", intended: "/immigration-consultancy — House of papers (passport/travel)", src: immigration },
-  { slug: "agro-allied", intended: "/agro-allied — House of harvest (farmland)", src: agro },
-  { slug: "real-estate", intended: "/real-estate — House of land (modern home)", src: realEstate },
-  { slug: "foundation", intended: "/foundation — House of voice (community)", src: foundation },
+  { slug: "landing", intended: "Landing (/) — Awk Group overview", src: landing },
+  { slug: "interior", intended: "/interior-empire — Business of craft (curtains, duvets)", src: interior },
+  { slug: "immigration", intended: "/immigration-consultancy — Business of papers (passport/travel)", src: immigration },
+  { slug: "agro-allied", intended: "/agro-allied — Business of harvest (farmland)", src: agro },
+  { slug: "real-estate", intended: "/real-estate — Business of land (modern home)", src: realEstate },
+  { slug: "foundation", intended: "/foundation — Business of voice (community)", src: foundation },
 ];
 
 export default function PreviewHeroes() {

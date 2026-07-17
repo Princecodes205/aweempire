@@ -27,8 +27,8 @@ export default function ServicesGrid({ brand }) {
             {countWord} {count === 1 ? "thing" : "things"}, done properly.
           </h2>
           <p className="mt-3 max-w-2xl text-ink/70">
-            {brand.name} covers the full {brand.heroEyebrow.toLowerCase().replace("house of ", "")} —
-            not as a side hustle, but as the only thing this house does.
+            {brand.name} covers the full {brand.heroEyebrow.toLowerCase().replace(/house of |business of /, "")} —
+            not as a side hustle, but as the only thing this business does.
           </p>
         </Reveal>
         <Stagger as="div" className="mt-12 grid gap-6 md:grid-cols-2">

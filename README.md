@@ -1,3 +1,3 @@
-# Awk Empire
+# Awk Group
 
-Five Nigerian houses under one root — Interior, Immigration, Agro Allied, Real Estate, and the AWK Empire Foundation. Built with React + Vite.
+Five Nigerian businesses under one root — Interior, Immigration, Agro Allied, Real Estate, and the AWK Empire Foundation. Built with React + Vite.

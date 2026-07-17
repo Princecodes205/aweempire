@@ -18,12 +18,12 @@ export default function Wordmark({ size = "md", tone = "dark", as: Tag = "span",
   const t = toneMap[tone] ?? toneMap.dark;
 
   return (
-    <Tag aria-label="Awk Empire" className={`inline-flex flex-col items-start leading-none ${className}`.trim()}>
+    <Tag aria-label="Awk Group" className={`inline-flex flex-col items-start leading-none ${className}`.trim()}>
       <span className={`font-display font-medium tracking-tight ${s.word} ${t}`}>Awk</span>
       <span
         className={`mt-1 font-display font-medium uppercase tracking-[0.3em] ${s.sub} text-brass`}
       >
-        Empire
+        Group
       </span>
     </Tag>
   );

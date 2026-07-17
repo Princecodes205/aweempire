@@ -1,4 +1,4 @@
-// Route tree for Awk Empire.
+// Route tree for Awk Group.
 // Layout wraps every page; child routes render inside <Outlet /> in Layout.
 import { createBrowserRouter } from "react-router";
 import Layout from "./components/layout/Layout.jsx";
