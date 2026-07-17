@@ -64,7 +64,7 @@ export const brands = [
     tagline: "Premium bedsheets, luxury duvets, and bespoke window treatments — made to order.",
     heroEyebrow: "Business of craft",
     heroHeadline: "Rooms that hold a life, not just furniture.",
-    lede: "From a single made-to-measure curtain to a full interior build-out, we work with homes, apartments, and small commercial spaces across Karu, Abuja, and beyond. Warm materials, exacting fit, and timelines we keep.",
+    lede: "From a single made-to-measure curtain to a full interior build-out, we work with homes, apartments, and small commercial spaces across Abuja, Nigeria and beyond. Warm materials, exacting fit, and timelines we keep.",
     services: [
       {
         title: "Bedsheets",
@@ -366,7 +366,7 @@ export const brands = [
   // material.
   {
     slug: "foundation",
-    name: "AWK Empire Foundation",
+    name: "AWK Group Foundation",
     to: "/foundation",
     accentClass: "foundation",
     tagline: "Our social heartbeat — institutional transparency, advocacy, healthcare, education, and electoral enlightenment.",
@@ -489,9 +489,9 @@ export const landing = {
   lede: "Welcome to the AWK Ecosystem. From transforming living spaces and facilitating global mobility to driving agricultural sustainability and advocating for a better society, we build solutions that empower lives and secure futures.",
   story: {
     eyebrow: "Our story",
-    title: "The Genesis of AWK Empire.",
+    title: "The Genesis of AWK Group.",
     paragraphs: [
-      "Every great structure begins with a strong foundation. Like the resilient Oak tree, which stands firm through changing seasons while providing shade and shelter, The AWK Empire was established to be a pillar of growth, security, and transformation across Africa and beyond.",
+      "Every great structure begins with a strong foundation. Like the resilient Oak tree, which stands firm through changing seasons while providing shade and shelter, The AWK Group was established to be a pillar of growth, security, and transformation across Africa and beyond.",
       "What began as a passion for exquisite lifestyle design has evolved into a dynamic, multi-faceted conglomerate. Today, our footprint spans five distinct sectors: Interior Architecture & Textiles, Global Mobility & Immigration, Sustainable Agribusiness, Real Estate Investment, and Civic Advocacy.",
       "We do not merely run businesses; we build interconnected ecosystems. By blending strategic foresight with absolute integrity, we ensure that every branch of our empire delivers world-class value to individuals, families, corporate organizations, and society at large.",
     ],
