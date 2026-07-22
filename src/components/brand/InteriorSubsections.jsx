@@ -4,23 +4,24 @@
 // Console) render as a 4–5 col / 2 col responsive image grid using the
 // shared `InteriorImageGrid` component below.
 //
-// Image source: Vite's `import.meta.glob` walks the folders under
-// `src/assets/images/` at build time and emits hashed, cache-busted
-// asset URLs. To add a new image, drop the file in the matching folder
-// and save — it appears in the grid on the next build. No code edit.
+// Image source: Sanity (v7). Each subsection fetches via galleryQuery
+// against its pinned section value. The section values must match the
+// Studio dropdown — see studio/schemas/galleryImage.js.
 //
 // V5 PENDING (per the v5 brief, 2026-07-10):
 //   1. The v2 open question of whether Clothing is still part of
 //      Interior Empire is NOT resolved by this v6 work — Clothing
 //      remains in the Interior services array per the 2026-07-10
 //      client confirmation. Confirm again with Champ before launch.
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   curtainAccessoriesWhatsAppHref,
   duvetSetsWhatsAppHref,
   popTvConsoleWhatsAppHref,
   accentMap,
 } from "../../data/content.js";
+import { client, urlFor } from "../../lib/sanity.js";
+import { galleryQuery } from "../../lib/queries.js";
 import Container from "../ui/Container.jsx";
 import Section from "../ui/Section.jsx";
 import Eyebrow from "../ui/Eyebrow.jsx";
@@ -28,40 +29,6 @@ import Icon from "../ui/Icon.jsx";
 import { Reveal, Stagger, StaggerChild } from "../motion/primitives.jsx";
 
 const accent = accentMap.interior;
-
-// Build-time image discovery. `eager: true` returns the URLs at module
-// load instead of producing lazy loaders, which is what we want for a
-// static grid. `query: "?url"` makes Vite emit a URL string instead of
-// a module wrapper, so the default export IS the URL. Sorting gives a
-// stable order across machines (the glob itself doesn't guarantee one).
-//
-// Vite requires the glob pattern to be a string literal at the call
-// site — patterns can't be passed through a helper — so each folder
-// gets its own inline glob. The path is RELATIVE TO THIS FILE (Vite
-// does not support absolute or `public/`-rooted patterns for globs).
-const curtainImageMap = import.meta.glob(
-  "../../assets/images/curtain-accessories/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-  { eager: true, query: "?url", import: "default" },
-);
-const curtainImages = Object.keys(curtainImageMap)
-  .sort()
-  .map((key) => curtainImageMap[key]);
-
-const duvetImageMap = import.meta.glob(
-  "../../assets/images/duvet-sets/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-  { eager: true, query: "?url", import: "default" },
-);
-const duvetImages = Object.keys(duvetImageMap)
-  .sort()
-  .map((key) => duvetImageMap[key]);
-
-const popTvImageMap = import.meta.glob(
-  "../../assets/images/pop-tv-console/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-  { eager: true, query: "?url", import: "default" },
-);
-const popTvImages = Object.keys(popTvImageMap)
-  .sort()
-  .map((key) => popTvImageMap[key]);
 
 // One tile in the image grid. Renders the image; on load error, swaps to
 // a gray placeholder box with a TODO label so the page never breaks.
@@ -97,7 +64,44 @@ function ImageTile({ src, alt, index }) {
   );
 }
 
-// Shared grid shell. Used by all three subsections.
+// Hook that fetches a Sanity gallery section once on mount and returns
+// the resulting image list. Cancels the in-flight request on unmount so
+// the page is safe to navigate away from while a slow CDN is in flight.
+function useSanityGallery(section) {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    client
+      .fetch(galleryQuery(section))
+      .then((docs) => {
+        if (cancelled) return;
+        setImages(
+          docs.map((d) => ({
+            id: d._id,
+            src: urlFor(d.image).url(),
+            alt: d.alt || null,
+          })),
+        );
+      })
+      .catch((err) => {
+        // Don't surface to the user — fall through to the same empty
+        // state as a gallery with no documents.
+        console.error(
+          `InteriorSubsections (${section}): failed to fetch from Sanity`,
+          err,
+        );
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [section]);
+
+  return images;
+}
+
+// Shared grid shell. Used by all three subsections. Now takes
+// `images` from a Sanity hook rather than a build-time glob.
 function InteriorImageGrid({ eyebrow, title, intro, images, whatsappHref }) {
   return (
     <Section>
@@ -120,9 +124,13 @@ function InteriorImageGrid({ eyebrow, title, intro, images, whatsappHref }) {
             amount={0.05}
             className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 md:gap-4"
           >
-            {images.map((src, i) => (
-              <StaggerChild key={src}>
-                <ImageTile src={src} alt={`${title} — image ${i + 1}`} index={i + 1} />
+            {images.map((img, i) => (
+              <StaggerChild key={img.id}>
+                <ImageTile
+                  src={img.src}
+                  alt={img.alt || `${title} — image ${i + 1}`}
+                  index={i + 1}
+                />
               </StaggerChild>
             ))}
           </Stagger>
@@ -145,36 +153,39 @@ function InteriorImageGrid({ eyebrow, title, intro, images, whatsappHref }) {
 }
 
 export function CurtainAccessories() {
+  const images = useSanityGallery("curtain-accessories");
   return (
     <InteriorImageGrid
       eyebrow="Interior Empire"
       title="Curtain Accessories"
       intro="The finishing pieces that make a window treatment feel complete — rods, tiebacks, hooks, rings, and trims. Pulled together for made-to-measure installs across Karu, Abuja, and beyond."
-      images={curtainImages}
+      images={images}
       whatsappHref={curtainAccessoriesWhatsAppHref}
     />
   );
 }
 
 export function DuvetSets() {
+  const images = useSanityGallery("duvet-sets");
   return (
     <InteriorImageGrid
       eyebrow="Interior Empire"
       title="Duvet Sets"
       intro="Layered bedding in a range of designs and sizes, cut and sewn to your bed and your climate. Browse the set below and reach out on WhatsApp to check current stock."
-      images={duvetImages}
+      images={images}
       whatsappHref={duvetSetsWhatsAppHref}
     />
   );
 }
 
 export function PopTvConsole() {
+  const images = useSanityGallery("pop-tv-console");
   return (
     <InteriorImageGrid
       eyebrow="Interior Empire"
       title="POP & TV Console Designs"
       intro="Plaster-of-Paris ceiling work and custom TV console units, built to fit the room and the brief. Each piece measured, finished, and installed by the same crew that handles our curtain work."
-      images={popTvImages}
+      images={images}
       whatsappHref={popTvConsoleWhatsAppHref}
     />
   );

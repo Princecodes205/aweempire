@@ -1,14 +1,18 @@
 // Agro Allied — image-driven gallery.
 //
-// Same grid pattern as InteriorSubsections. Vite's `import.meta.glob`
-// walks `src/assets/images/agro/` at build time, so dropping a new
-// image in that folder is enough to make it appear in the grid on the
-// next build — no code edit.
+// Now backed by Sanity (v7). The four section values — curtain-
+// accessories, duvet-sets, pop-tv-console, agro — are pinned in the
+// Studio schema dropdown. The frontend query in src/lib/queries.js
+// filters strictly by these values, so the client can't accidentally
+// push an image to the wrong section by mistyping a name.
 //
 // Accent is olive (`bg-agro`) per the v6 brief, separate from the
 // Interior page's brick accent.
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { agroAlliedWhatsAppHref, accentMap } from "../../data/content.js";
+import { client } from "../../lib/sanity.js";
+import { galleryQuery } from "../../lib/queries.js";
+import { urlFor } from "../../lib/sanity.js";
 import Container from "../ui/Container.jsx";
 import Section from "../ui/Section.jsx";
 import Eyebrow from "../ui/Eyebrow.jsx";
@@ -16,18 +20,6 @@ import Icon from "../ui/Icon.jsx";
 import { Reveal, Stagger, StaggerChild } from "../motion/primitives.jsx";
 
 const accent = accentMap["agro-allied"];
-
-// Build-time image discovery. `eager: true` returns the URLs at module
-// load instead of producing lazy loaders. `query: "?url"` makes Vite
-// emit a URL string instead of a module wrapper. Sorting gives a
-// stable order across machines.
-const agroImageMap = import.meta.glob(
-  "../../assets/images/agro/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-  { eager: true, query: "?url", import: "default" },
-);
-const agroImages = Object.keys(agroImageMap)
-  .sort()
-  .map((key) => agroImageMap[key]);
 
 function ImageTile({ src, alt, index }) {
   const [broken, setBroken] = useState(false);
@@ -60,6 +52,32 @@ function ImageTile({ src, alt, index }) {
 }
 
 export default function AgroGallery() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    client
+      .fetch(galleryQuery("agro"))
+      .then((docs) => {
+        if (cancelled) return;
+        setImages(
+          docs.map((d) => ({
+            id: d._id,
+            src: urlFor(d.image).url(),
+            alt: d.alt || `Awk Agro Allied — image`,
+          })),
+        );
+      })
+      .catch((err) => {
+        // Don't surface to the user — fall through to the same empty
+        // state as a gallery with no documents, so the page never breaks.
+        console.error("AgroGallery: failed to fetch from Sanity", err);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <Section>
       <Container>
@@ -75,7 +93,7 @@ export default function AgroGallery() {
           </p>
         </Reveal>
 
-        {agroImages.length === 0 ? (
+        {images.length === 0 ? (
           <p className="mt-10 text-sm text-ink/50">
             No images uploaded yet.
           </p>
@@ -85,11 +103,11 @@ export default function AgroGallery() {
             amount={0.05}
             className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 md:gap-4"
           >
-            {agroImages.map((src, i) => (
-              <StaggerChild key={src}>
+            {images.map((img, i) => (
+              <StaggerChild key={img.id}>
                 <ImageTile
-                  src={src}
-                  alt={`Awk Agro Allied — image ${i + 1}`}
+                  src={img.src}
+                  alt={`${img.alt} ${i + 1}`}
                   index={i + 1}
                 />
               </StaggerChild>
